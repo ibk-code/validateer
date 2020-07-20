@@ -1,0 +1,27 @@
+{
+  "name": "validater",
+  "version": "1.0.0",
+  "description": "A form validater library for form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "@ibk-code/validater"
+  },
+  "keywords": [
+    "form",
+    "validation",
+    "javascript",
+    "helloibk"
+  ],
+  "author": "helloibk",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-watch": "^7.0.0"
+  }
+}
