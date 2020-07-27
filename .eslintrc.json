@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "env": {
+      "es6": true
+    },
+    "ecmaVersion": 11
+  },
+  "rules": {
+    "semi": ["error", "always"]
+  },
+  "globals": {
+    "module": "writable",
+    "describe": "writable",
+    "require": "writable",
+    "it": "writable",
+    "expect": "writable"
+  }
+}

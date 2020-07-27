@@ -4,7 +4,7 @@
   "description": "A form validater library for form",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "lint": "npx eslint index.js"
   },
   "repository": {
@@ -22,6 +22,7 @@
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-watch": "^7.0.0"
+    "eslint-watch": "^7.0.0",
+    "jasmine": "^3.5.0"
   }
 }
