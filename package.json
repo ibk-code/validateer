@@ -1,12 +1,8 @@
 {
-  "name": "validater",
-  "version": "1.0.0",
-  "description": "A form validater library for form",
+  "name": "validateer",
+  "version": "1.0.8",
+  "description": "A validating library for javascript",
   "main": "index.js",
-  "scripts": {
-    "test": "jasmine",
-    "lint": "npx eslint index.js"
-  },
   "repository": {
     "type": "git",
     "url": "@ibk-code/validater"
@@ -15,14 +11,13 @@
     "form",
     "validation",
     "javascript",
-    "helloibk"
+    "string",
+    "sanitization",
+    "checker",
+    "url",
+    "date",
+    "number"
   ],
   "author": "helloibk",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^7.4.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-watch": "^7.0.0",
-    "jasmine": "^3.5.0"
-  }
+  "license": "MIT"
 }

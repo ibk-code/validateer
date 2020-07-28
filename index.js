@@ -1,44 +1,29 @@
-// Validater Javascript Library v1.0.0
+// Validateer Javascript Library v1.0.6
 
-// Copyright JS Foundation and other contributors
 // Released under the MIT license
 // Date: 2020-07-17
 
-// module.exports = (function (global, factory) {
-//   "use strict";
-
-//   if (typeof module === "object" && typeof module.exports === "object") {
-//     // For CommonJS and CommonJS-like environments where a proper `window`
-//     // is present, execute the factory and get Validater.
-//     module.exports = factory(global);
-//   } else {
-//     factory(global);
-//   }
-// })(typeof window !== "undefined" ? window : this, );
-
-// function validate(global) {
-let Validater = function (elem, event) {
-  return new Validater.init(elem, event);
+let Validateer = function (elem) {
+  return new Validateer.init(elem);
 };
 
-Validater.init = function (elem, event) {
+Validateer.init = function (elem) {
   let self = this;
   self.elem = elem || "";
-  self.event = event || "";
   self.message = " ";
 };
 
-Validater.prototype = {
+Validateer.prototype = {
   validateEmail: function (pattern, callback) {
     // set the email pattern validation
     //eslint-disable-next-line
     pattern = pattern || /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     // verify if email is valid with pattern
-    if (this.elem.value.match(pattern)) {
-      this.message = "email is valid";
+    if (this.elem.match(pattern)) {
+      this.message = true;
     } else {
-      this.message = "email is invalid";
+      this.message = false;
     }
 
     if (callback !== undefined) {
@@ -50,8 +35,10 @@ Validater.prototype = {
 
   // method to check if field is empty
   validateEmpty: function (callback) {
-    if (this.elem.value.length <= 0) {
+    if (this.elem.length <= 0) {
       this.message = true;
+    } else {
+      this.message = false;
     }
 
     if (callback !== undefined) {
@@ -65,7 +52,7 @@ Validater.prototype = {
   validateLetters: function (pattern, callback) {
     pattern = pattern || /^[A-Za-z]+$/;
 
-    if (this.elem.value.match(pattern)) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -81,7 +68,7 @@ Validater.prototype = {
   validateNumber: function (pattern, callback) {
     pattern = pattern || /^[0-9]+$/;
 
-    if (this.elem.value.match(pattern)) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -97,7 +84,7 @@ Validater.prototype = {
   validateAlphaNumeric: function (pattern, callback) {
     pattern = pattern || /^[a-z0-9A-z]+$/;
 
-    if (this.elem.value.match(pattern)) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -111,10 +98,7 @@ Validater.prototype = {
   },
 
   validateLength: function (minlength, maxlength, callback) {
-    if (
-      this.elem.value.length >= minlength &&
-      this.elem.value.length <= maxlength
-    ) {
+    if (this.elem.length >= minlength && this.elem.length <= maxlength) {
       this.message = true;
     } else {
       this.message = false;
@@ -132,7 +116,7 @@ Validater.prototype = {
       //eslint-disable-next-line
       pattern || /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
 
-    if (this.elem.value.match(pattern)) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -148,7 +132,7 @@ Validater.prototype = {
   validatePhoneNumber: function (pattern, callback) {
     pattern = pattern = /^\+?([0-9]){1,3}[-. ]?([0-9]){3,5}[-. ]?([0-9]){3,5}/;
 
-    if (this.elem.value.match(pattern)) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -161,10 +145,10 @@ Validater.prototype = {
     return this;
   },
 
-  validatePassword: function (minLen, pattern, callback) {
+  validatePassword: function (pattern, callback) {
     pattern = pattern || /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/;
 
-    if (this.elem.value.match(pattern) && this.elem.value.length >= minLen) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -182,7 +166,7 @@ Validater.prototype = {
       pattern ||
       /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
 
-    if (this.elem.value.match(pattern)) {
+    if (this.elem.match(pattern)) {
       this.message = true;
     } else {
       this.message = false;
@@ -195,24 +179,15 @@ Validater.prototype = {
     return this;
   },
 };
-Validater.init.prototype = Validater.prototype;
+Validateer.init.prototype = Validateer.prototype;
 
-// if (this.Validater === undefined) {
-//   this.Validater = Validater;
-//   if (this.Validater !== undefined && this.vd === undefined) {
-//     this.vd = Validater;
-//   }
-// }
-
-if (typeof module != "undefined") {
-  module.exports = Validater;
+if (typeof exports != "undefined") {
+  exports.vd = Validateer;
 } else {
-  if (this.Validater === undefined) {
-    this.Validater = Validater;
-    if (this.Validater !== undefined && this.vd === undefined) {
-      this.vd = Validater;
+  if (this.Validateer === undefined) {
+    this.Validateer = Validateer;
+    if (this.Validateer !== undefined && this.vd === undefined) {
+      this.vd = Validateer;
     }
   }
 }
-
-// }
