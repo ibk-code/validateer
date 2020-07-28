@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "@ibk-code/validater"
+    "url": "@ibk-code/validateer"
   },
   "keywords": [
     "form",
